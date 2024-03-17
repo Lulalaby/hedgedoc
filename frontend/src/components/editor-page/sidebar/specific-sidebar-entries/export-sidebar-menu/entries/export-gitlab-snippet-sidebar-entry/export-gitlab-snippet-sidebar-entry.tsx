@@ -4,25 +4,25 @@
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 import React, { Fragment } from 'react'
-import { Github as IconGithub } from 'react-bootstrap-icons'
 import { SidebarButton } from '../../../../sidebar-button/sidebar-button'
-import { ExportGistModal } from './export-gist-modal'
 import { useBooleanState } from '../../../../../../../hooks/common/use-boolean-state'
 import { Trans, useTranslation } from 'react-i18next'
+import { IconGitlab } from '../../../../../../common/icons/additional/icon-gitlab'
+import { ExportGitlabSnippetModal } from './export-gitlab-snippet-modal'
 
 /**
- * Renders the sidebar entry for exporting the note content to a GitHub Gist.
+ * Renders the sidebar entry for exporting the note content to a GitLab snippet.
  */
-export const ExportGistSidebarEntry: React.FC = () => {
+export const ExportGitlabSnippetSidebarEntry: React.FC = () => {
   useTranslation()
   const [showModal, setShowModal, setHideModal] = useBooleanState(false)
 
   return (
     <Fragment>
-      <SidebarButton icon={IconGithub} onClick={setShowModal}>
-        <Trans i18nKey={'editor.export.gist.service'} />
+      <SidebarButton icon={IconGitlab} onClick={setShowModal}>
+        <Trans i18nKey={'editor.export.gitlab.service'} />
       </SidebarButton>
-      <ExportGistModal show={showModal} onHide={setHideModal} />
+      <ExportGitlabSnippetModal show={showModal} onHide={setHideModal} />
     </Fragment>
   )
 }

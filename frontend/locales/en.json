@@ -333,20 +333,34 @@
       }
     },
     "export": {
-      "gist": {
-        "sidebarEntry": "GitHub Gist",
-        "title": "Export to GitHub Gist",
-        "createButton": "Create Gist",
+      "common": {
+        "title": "Export to {{service}}",
+        "createButton": "Create {{export}}",
         "headingAuthentication": "Authentication",
-        "headingSettings": "Gist settings",
-        "fieldToken": "Access token for GitHub",
-        "infoToken": "You need a personal access token with the Gists account permission. You can create one in your GitHub settings here:",
+        "headingSettings": "Export settings",
+        "fieldToken": "Access token",
         "fieldDescription": "Description",
-        "fieldPublic": "Make Gist public?",
-        "notificationSuccessTitle": "GitHub Gist successfully created",
-        "notificationSuccessMessage": "The note has been exported to GitHub Gist.",
-        "notificationSuccessButton": "Open Gist",
-        "notificationErrorTitle": "Error while creating GitHub Gist: {{errorMessage}}"
+        "notificationSuccessTitle": "{{export}} successfully created",
+        "notificationSuccessMessage": "The note has been exported to {{service}}.",
+        "notificationSuccessButton": "Open {{export}}",
+        "notificationErrorTitle": "Error while creating {{export}}: {{errorMessage}}"
+      },
+      "gist": {
+        "service": "GitHub Gist",
+        "export": "Gist",
+        "infoToken": "You need a personal access token with the Gists account permission. You can create one in your GitHub settings here:",
+        "fieldPublic": "Make Gist public?"
+      },
+      "gitlab": {
+        "service": "GitLab snippet",
+        "export": "Snippet",
+        "infoToken": "You need a personal access token with the api permission. You can create one in your GitLab user settings here:",
+        "fieldVisibility": "Set snippet visibility",
+        "visibilityLevel": {
+          "private": "Private",
+          "internal": "Internal",
+          "public": "Public"
+        }
       },
       "rawHtml": "Raw HTML",
       "markdown-file": "Markdown file"

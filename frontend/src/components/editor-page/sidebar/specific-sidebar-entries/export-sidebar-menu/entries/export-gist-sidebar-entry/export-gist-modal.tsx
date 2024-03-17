@@ -16,11 +16,7 @@ import { useTranslatedText } from '../../../../../../../hooks/common/use-transla
 import { Trans, useTranslation } from 'react-i18next'
 import { ExternalLink } from '../../../../../../common/links/external-link'
 import { createGist } from './create-gist'
-
-const GITHUB_CLASSIC_TOKEN_LENGTH = 40
-const GITHUB_CLASSIC_TOKEN_PREFIX = 'ghp_'
-const GITHUB_SCOPED_TOKEN_LENGTH = 93
-const GITHUB_SCOPED_TOKEN_PREFIX = 'github_pat_'
+import { validateToken } from './validate-token'
 
 /**
  * Renders the modal for exporting the note content to a GitHub Gist.
@@ -32,9 +28,15 @@ export const ExportGistModal: React.FC<ModalVisibilityProps> = ({ show, onHide }
   useTranslation()
   const noteContent = useNoteMarkdownContent()
   const noteFilename = useNoteFilename()
+
   const { dispatchUiNotification, showErrorNotification } = useUiNotifications()
-  const textModalTitle = useTranslatedText('editor.export.gist.title')
-  const textNotificationButton = useTranslatedText('editor.export.gist.notificationSuccessButton')
+
+  const textService = useTranslatedText('editor.export.gist.service')
+  const textExport = useTranslatedText('editor.export.gist.export')
+  const textModalTitle = useTranslatedText('editor.export.common.title', { service: textService })
+  const textNotificationButton = useTranslatedText('editor.export.common.notificationSuccessButton', {
+    export: textExport
+  })
   const textFieldPublic = useTranslatedText('editor.export.gist.fieldPublic')
 
   const [ghToken, setGhToken] = useState('')
@@ -45,49 +47,52 @@ export const ExportGistModal: React.FC<ModalVisibilityProps> = ({ show, onHide }
   const onGhTokenChange = useOnInputChange(setGhToken)
   const onGistPublicChange = useCallback(() => setGistPublic((prev) => !prev), [])
 
-  const ghTokenFormatValid = useMemo(() => {
-    return (
-      (ghToken.startsWith(GITHUB_CLASSIC_TOKEN_PREFIX) && ghToken.length === GITHUB_CLASSIC_TOKEN_LENGTH) ||
-      (ghToken.startsWith(GITHUB_SCOPED_TOKEN_PREFIX) && ghToken.length === GITHUB_SCOPED_TOKEN_LENGTH)
-    )
-  }, [ghToken])
+  const ghTokenFormatValid = useMemo(() => validateToken(ghToken), [ghToken])
 
   const onCreateGist = useCallback(() => {
     createGist(ghToken, noteContent, noteFilename, gistDescription, gistPublic)
       .then((gistUrl) => {
         dispatchUiNotification(
-          'editor.export.gist.notificationSuccessTitle',
-          'editor.export.gist.notificationSuccessMessage',
+          'editor.export.common.notificationSuccessTitle',
+          'editor.export.common.notificationSuccessMessage',
           {
             durationInSecond: 30,
             icon: Github,
-            buttons: [{ label: textNotificationButton, onClick: () => window.open(gistUrl, '_blank') }]
+            buttons: [{ label: textNotificationButton, onClick: () => window.open(gistUrl, '_blank') }],
+            titleI18nOptions: {
+              export: textExport
+            },
+            contentI18nOptions: {
+              service: textService
+            }
           }
         )
         onHide?.()
       })
-      .catch(showErrorNotification('editor.export.gist.notificationErrorTitle', {}, true))
+      .catch(showErrorNotification('editor.export.common.notificationErrorTitle', { export: textExport }, true))
   }, [
-    onHide,
     ghToken,
-    gistDescription,
-    gistPublic,
     noteContent,
     noteFilename,
-    dispatchUiNotification,
+    gistDescription,
+    gistPublic,
     showErrorNotification,
-    textNotificationButton
+    textExport,
+    dispatchUiNotification,
+    textNotificationButton,
+    textService,
+    onHide
   ])
 
   return (
     <CommonModal show={show} onHide={onHide} title={textModalTitle} showCloseButton={true} titleIcon={Github}>
       <Modal.Body>
         <h5 className={'mb-2'}>
-          <Trans i18nKey={'editor.export.gist.headingAuthentication'} />
+          <Trans i18nKey={'editor.export.common.headingAuthentication'} />
         </h5>
         <FormGroup className={'my-2'}>
           <FormLabel>
-            <Trans i18nKey={'editor.export.gist.fieldToken'} />
+            <Trans i18nKey={'editor.export.common.fieldToken'} />
           </FormLabel>
           <FormControl value={ghToken} onChange={onGhTokenChange} type={'password'} isInvalid={!ghTokenFormatValid} />
           <FormText muted={true}>
@@ -99,11 +104,11 @@ export const ExportGistModal: React.FC<ModalVisibilityProps> = ({ show, onHide }
           </FormText>
         </FormGroup>
         <h5 className={'mb-2 mt-4'}>
-          <Trans i18nKey={'editor.export.gist.headingSettings'} />
+          <Trans i18nKey={'editor.export.common.headingSettings'} />
         </h5>
         <FormGroup className={'my-2'}>
           <FormLabel>
-            <Trans i18nKey={'editor.export.gist.fieldDescription'} />
+            <Trans i18nKey={'editor.export.common.fieldDescription'} />
           </FormLabel>
           <FormControl value={gistDescription} onChange={onGistDescriptionChange} type={'text'} />
         </FormGroup>
@@ -113,7 +118,7 @@ export const ExportGistModal: React.FC<ModalVisibilityProps> = ({ show, onHide }
       </Modal.Body>
       <Modal.Footer>
         <Button variant={'success'} onClick={onCreateGist} disabled={!ghTokenFormatValid}>
-          <Trans i18nKey={'editor.export.gist.createButton'} />
+          <Trans i18nKey={'editor.export.common.createButton'} tOptions={{ export: textExport }} />
         </Button>
       </Modal.Footer>
     </CommonModal>

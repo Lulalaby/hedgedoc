@@ -4,7 +4,6 @@
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 import { cypressId } from '../../../../../utils/cypress-attribute'
-import { IconGitlab } from '../../../../common/icons/additional/icon-gitlab'
 import { SidebarButton } from '../../sidebar-button/sidebar-button'
 import { SidebarMenu } from '../../sidebar-menu/sidebar-menu'
 import type { SpecificSidebarMenuProps } from '../../types'
@@ -18,6 +17,7 @@ import {
 } from 'react-bootstrap-icons'
 import { Trans, useTranslation } from 'react-i18next'
 import { ExportGistSidebarEntry } from './entries/export-gist-sidebar-entry/export-gist-sidebar-entry'
+import { ExportGitlabSnippetSidebarEntry } from './entries/export-gitlab-snippet-sidebar-entry/export-gitlab-snippet-sidebar-entry'
 
 /**
  * Renders the export menu for the sidebar.
@@ -52,10 +52,7 @@ export const ExportSidebarMenu: React.FC<SpecificSidebarMenuProps> = ({
       </SidebarButton>
       <SidebarMenu expand={expand}>
         <ExportGistSidebarEntry />
-        <SidebarButton icon={IconGitlab} disabled={true}>
-          Gitlab Snippet
-        </SidebarButton>
-
+        <ExportGitlabSnippetSidebarEntry />
         <ExportMarkdownSidebarEntry />
 
         <SidebarButton icon={IconFileCode} disabled={true}>
