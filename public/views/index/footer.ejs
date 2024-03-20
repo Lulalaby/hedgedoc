@@ -2,7 +2,7 @@
 
 import { DiscordSDK } from "https://unpkg.com/@discord/embedded-app-sdk@1.0.0/output/index.mjs";
 
-const config = require('../../../lib/config')
+import config from "../../../lib/config";
 
 const discordSdk = new DiscordSDK(config.discord.clientID);
 
