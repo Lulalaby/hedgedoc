@@ -210,6 +210,7 @@ app.locals.authProviders = {
   gitlab: config.isGitLabEnable,
   mattermost: config.isMattermostEnable,
   dropbox: config.isDropboxEnable,
+  discord: config.isDiscordEnabled,
   google: config.isGoogleEnable,
   ldap: config.isLDAPEnable,
   ldapProviderName: config.ldap.providerName,

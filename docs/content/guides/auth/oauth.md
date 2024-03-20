@@ -4,6 +4,7 @@
 | ---------- | ----------------------------------- |
 | facebook   | `/auth/facebook/callback`           |
 | twitter    | `/auth/twitter/callback`            |
+| discord    | `/auth/discord/callback`            |
 | github     | `/auth/github/callback`             |
 | gitlab     | `/auth/gitlab/callback`             |
 | mattermost | `/auth/mattermost/callback`         |
