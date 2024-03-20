@@ -18,9 +18,9 @@ async function setup() {
         ''
         scope: ['identify','guilds','rpc.voice.read','email','connections','guilds.members.read','rpc.activities.write'],
     });
-    const response = await fetch(`/auth/discord/callback?code=` + code);
+    const response = await fetch('/auth/discord/callback?code=' + code);
 
-    const {access_token} = await response.json()
+    const {access_token} = await response.json();
 
     const auth = await discordSdk.commands.authenticate({
         access_token,
