@@ -806,6 +806,46 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/oauth@npm:*":
+  version: 0.9.4
+  resolution: "@types/oauth@npm:0.9.4"
+  dependencies:
+    "@types/node": "*"
+  checksum: eb82393214ddc4e5bff2177cecb80237a7e2562ee94872234dcf822118a6b8bff11efa37e26f98a836b675bc211689272cdecb7d9221a9990dbc5a4b363fc033
+  languageName: node
+  linkType: hard
+
+"@types/passport-discord@npm:^0.1.13":
+  version: 0.1.13
+  resolution: "@types/passport-discord@npm:0.1.13"
+  dependencies:
+    "@types/express": "*"
+    "@types/passport": "*"
+    "@types/passport-oauth2": "*"
+  checksum: e0ba9cbdfcf4e07d86e5c5a126b15f1fa8f04cab6c3176bc77e0a930c49cc75e710976ed336b40ff916c29ded5d2ca9c3274b7370fa0ce069b9bbb4503b80ea7
+  languageName: node
+  linkType: hard
+
+"@types/passport-oauth2@npm:*":
+  version: 1.4.15
+  resolution: "@types/passport-oauth2@npm:1.4.15"
+  dependencies:
+    "@types/express": "*"
+    "@types/oauth": "*"
+    "@types/passport": "*"
+  checksum: 352c4e2d09a86f8fc0dcf2c917c221f302a35a14e7467e2fa3a1653c0a9a1f842c910a4e52f799856536522e6359c20d1afc319579d9edf4b2ac7ea11b183b52
+  languageName: node
+  linkType: hard
+
+"@types/passport@npm:*":
+  version: 1.0.16
+  resolution: "@types/passport@npm:1.0.16"
+  dependencies:
+    "@types/express": "*"
+  checksum: e4a02fa338536eb82694ea548689a7214b1ca98df6a896080daa2b6a8859db02a1e6244eeefaf6f3cc9c268239bb4a7912049a9ed86192144a65c10e55219f80
+  languageName: node
+  linkType: hard
+
 "@types/qs@npm:*":
   version: 6.9.11
   resolution: "@types/qs@npm:6.9.11"
@@ -1179,6 +1219,7 @@ __metadata:
   dependencies:
     "@hedgedoc/codemirror-5": 5.65.12
     "@passport-next/passport-openid": 1.0.0
+    "@types/passport-discord": ^0.1.13
     Idle.Js: "git+https://github.com/shawnmclean/Idle.js"
     abcjs: 6.3.0
     archiver: 6.0.1
@@ -1284,6 +1325,7 @@ __metadata:
     node-fetch: 2.7.0
     optimize-css-assets-webpack-plugin: 6.0.1
     passport: 0.7.0
+    passport-discord: ^0.1.4
     passport-dropbox-oauth2: 1.1.0
     passport-facebook: 3.0.0
     passport-github: 1.1.0
@@ -11176,6 +11218,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"oauth@npm:0.10.x":
+  version: 0.10.0
+  resolution: "oauth@npm:0.10.0"
+  checksum: 68fbcd9fc382985fd6a4856245bb9f78281c08ea238e814288c51e6cfb65e442c9c4eea67d54ec595384eb3f007e7b64ae3b8e67ec309228df44aba64cc9e0c7
+  languageName: node
+  linkType: hard
+
 "oauth@npm:0.9.x":
   version: 0.9.15
   resolution: "oauth@npm:0.9.15"
@@ -11634,6 +11683,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"passport-discord@npm:^0.1.4":
+  version: 0.1.4
+  resolution: "passport-discord@npm:0.1.4"
+  dependencies:
+    passport-oauth2: ^1.5.0
+  checksum: 81c0a7f45dd9b5b8192e4027d87c086737c8ba763bfb7102b7da6e6d5f99ab3669d6a8a89fa314d7dcc196e63877d0fc9cf23920da805de01abd96d4930221f2
+  languageName: node
+  linkType: hard
+
 "passport-dropbox-oauth2@npm:1.1.0":
   version: 1.1.0
   resolution: "passport-dropbox-oauth2@npm:1.1.0"
@@ -11720,6 +11778,19 @@ __metadata:
     uid2: 0.0.x
     utils-merge: 1.x.x
   checksum: 9e93f1f47ad5c22ef119932e03f383b503f692012352f27d2a416cc45ca5448c5a97f726da51753fff9a2ec2b6255ac27f1e68c4b44538530d2a8de682f17d42
+  languageName: node
+  linkType: hard
+
+"passport-oauth2@npm:^1.5.0":
+  version: 1.8.0
+  resolution: "passport-oauth2@npm:1.8.0"
+  dependencies:
+    base64url: 3.x.x
+    oauth: 0.10.x
+    passport-strategy: 1.x.x
+    uid2: 0.0.x
+    utils-merge: 1.x.x
+  checksum: a9a80b968343c9c1906f74ef613b346ec2d6a6acfe17af81e673fd774779b436729252485755c3ce182f2cdba2434d75067418952d722404d65b93c0360ca02b
   languageName: node
   linkType: hard
 
