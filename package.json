@@ -17,6 +17,7 @@
     "start": "node app.js"
   },
   "dependencies": {
+    "@discord/embedded-app-sdk": "^1.0.0",
     "@passport-next/passport-openid": "1.0.0",
     "@types/passport-discord": "^0.1.13",
     "Idle.Js": "git+https://github.com/shawnmclean/Idle.js",
