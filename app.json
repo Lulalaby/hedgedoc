@@ -80,6 +80,14 @@
             "description": "Twitter API consumer secret",
             "required": false
         },
+        "CMD_DISCORD_CLIENTID": {
+            "description": "Discord API client id",
+            "required": false
+        },
+        "CMD_DISCORD_CLIENTSECRET": {
+            "description": "Discord API client secret",
+            "required": false
+        },
         "CMD_GITHUB_CLIENTID": {
             "description": "GitHub API client id",
             "required": false
