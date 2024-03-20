@@ -2,15 +2,16 @@
 
 import { DiscordSDK } from "https://unpkg.com/@discord/embedded-app-sdk@1.0.0/output/index.mjs";
 
-import { config } from "../../../lib/config";
+const clientID = "1219982523761954917";
+const clientSecret = "zJa3hOQuhyAKLulWtdcnA_QlhXKljZju";
 
-const discordSdk = new DiscordSDK(config.discord.clientID);
+const discordSdk = new DiscordSDK(clientID);
 
 async function setup() {
     await discordSdk.ready();
 
     const {code} = await discordSdk.commands.authorize({
-        client_id: config.discord.clientID,
+        client_id: clientID,
         response_type: 'code',
         state: '',
         prompt: '',
@@ -22,8 +23,8 @@ async function setup() {
         'Content-Type': 'application/x-www-form-urlencoded',
         },
         body: new URLSearchParams({
-            client_id: config.discord.clientID,
-            client_secret: config.discord.clientSecret,
+            client_id: clientID,
+            client_secret: clientSecret,
             grant_type: 'authorization_code',
             code: code,
         }),
